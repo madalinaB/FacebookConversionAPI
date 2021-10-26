@@ -6,6 +6,19 @@ self.addEventListener('fetch', function(event) {
   );
 });
 
+self.addEventListener('install', (event) => {
+  console.log('Inside the install handler:', event);
+});
+
+self.addEventListener('activate', (event) => {
+  console.log('Inside the activate handler:', event);
+});
+
+self.addEventListener(fetch, (event) => {
+  console.log('Inside the fetch handler:', event);
+});
+
+
 function fetchWithParamAddedToRequestBody(request) {
   serialize(request).then(function(serialized) {
     // modify serialized.body here to add your request parameter
