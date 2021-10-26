@@ -1,10 +1,6 @@
 //https://stackoverflow.com/questions/43813770/how-to-intercept-all-http-requests-including-form-submits
  
-self.addEventListener('fetch', function(event) {
-  event.respondWith(
-    fetchWithParamAddedToRequestBody(event.request)
-  );
-});
+
 
 self.addEventListener('install', (event) => {
   console.log('Inside the install handler:', event);
@@ -14,10 +10,15 @@ self.addEventListener('activate', (event) => {
   console.log('Inside the activate handler:', event);
 });
 
-self.addEventListener(fetch, (event) => {
-  console.log('Inside the fetch handler:', event);
-});
+// self.addEventListener(fetch, (event) => {
+  // console.log('Inside the fetch handler:', event);
+// });
 
+self.addEventListener('fetch', function(event) {
+  event.respondWith(
+    fetchWithParamAddedToRequestBody(event.request)
+  );
+});
 
 function fetchWithParamAddedToRequestBody(request) {
   serialize(request).then(function(serialized) {
@@ -43,6 +44,7 @@ function serialize(request) {
     redirect: request.redirect,
     referrer: request.referrer
   };  
+   console.log('SERIALIZED');
   console.log(serialized);
   if (request.method !== 'GET' && request.method !== 'HEAD') {
     return request.clone().text().then(function(body) {
