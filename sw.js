@@ -1,4 +1,7 @@
+//https://developers.google.com/web/fundamentals/primers/service-workers
 //https://stackoverflow.com/questions/43813770/how-to-intercept-all-http-requests-including-form-submits
+//https://caniuse.com/serviceworkers
+//https://jakearchibald.github.io/isserviceworkerready/
  
 
 
@@ -16,7 +19,21 @@ self.addEventListener('activate', (event) => {
 
 self.addEventListener('fetch', function(event) {
   event.respondWith(
-    fetchWithParamAddedToRequestBody(event.request)
+    //fetchWithParamAddedToRequestBody(event.request)
+	
+	return fetch(event.request).then(
+          function(response) {
+			console.log('RESPONSE');
+			console.log(response);
+			  
+            // Check if we received a valid response
+            if(!response || response.status !== 200 || response.type !== 'basic') {
+              return response;
+            }
+			
+            return response;
+          }
+        );
   );
 });
 
