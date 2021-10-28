@@ -18,6 +18,7 @@ self.addEventListener('activate', (event) => {
 // });
 
 self.addEventListener('fetch', (event) => {
+	console.log('Inside the fetch handler:', event);
   event.respondWith(
     //fetchWithParamAddedToRequestBody(event.request)
 
