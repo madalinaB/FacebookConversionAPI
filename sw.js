@@ -20,8 +20,7 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
   event.respondWith(
     //fetchWithParamAddedToRequestBody(event.request)
-	console.log('event.respondWith');
-	
+
 	return fetch(event.request).then(
           function(response) {
 			console.log('RESPONSE');
