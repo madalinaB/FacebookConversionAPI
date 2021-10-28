@@ -21,7 +21,7 @@ self.addEventListener('fetch', (event) => {
   event.respondWith(
     //fetchWithParamAddedToRequestBody(event.request)
 
-	return fetch(event.request).then(
+	 fetch(event.request).then(
           function(response) {
 			console.log('RESPONSE');
 			console.log(response);
