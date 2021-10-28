@@ -16,21 +16,21 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
 	console.log('Inside the fetch handler:', event);
 	
-	var headers = {};
-    for (var entry of event.request.headers.entries()) {
-		headers[entry[0]] = entry[1];
-	}
-	var serialized = {
-		url: event.request.url,
-		headers: headers,
-		method: event.request.method,
-		mode: event.request.mode,
-		credentials: event.request.credentials,
-		cache: event.request.cache,
-		redirect: event.request.redirect,
-		referrer: event.request.referrer
-	};  
-	console.log(serialized);
+	// var headers = {};
+    // for (var entry of event.request.headers.entries()) {
+		// headers[entry[0]] = entry[1];
+	// }
+	// var serialized = {
+		// url: event.request.url,
+		// headers: headers,
+		// method: event.request.method,
+		// mode: event.request.mode,
+		// credentials: event.request.credentials,
+		// cache: event.request.cache,
+		// redirect: event.request.redirect,
+		// referrer: event.request.referrer
+	// };  
+	// console.log(serialized);
 	
 	try{
 		event.respondWith(
