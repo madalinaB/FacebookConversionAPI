@@ -14,7 +14,7 @@ self.addEventListener('activate', (event) => {
 });
 
 self.addEventListener('fetch', (event) => {
-	console.log('Inside the fetch handler: ' + event.request.url, event);
+	console.log('Inside the fetch handler: ', event);
 	
 	// var headers = {};
     // for (var entry of event.request.headers.entries()) {
