@@ -46,6 +46,9 @@ self.addEventListener('fetch', (event) => {
 				return response;
 			}).catch(function(error) {
 				console.log('FETCH ERROR:', error);
+				
+				var init = { "status" : 200 , "statusText" : "FETCH ERROR - fake 200 response" };
+				return new Response(null, init);
 			})
 	 );			
 });
