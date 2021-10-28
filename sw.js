@@ -14,7 +14,7 @@ self.addEventListener('activate', (event) => {
 });
 
 self.addEventListener('fetch', (event) => {
-	console.log('Inside the fetch handler:', event);
+	console.log('Inside the fetch handler: ' + event.request.url, event);
 	
 	// var headers = {};
     // for (var entry of event.request.headers.entries()) {
@@ -32,9 +32,9 @@ self.addEventListener('fetch', (event) => {
 	// };  
 	// console.log(serialized);
 	
-	try{
-		event.respondWith(
-		fetch(event.request).then(
+	event.respondWith(
+		fetch(event.request)
+		.then(
 			function(response) {
 				console.log('RESPONSE');
 				console.log(response);
@@ -46,9 +46,8 @@ self.addEventListener('fetch', (event) => {
 
 				return response;
 			})
-	  );		
-	}
-	catch (error) {
-		console.log('FETCH ERROR:', error);
-	}		
+		.catch(function(error) {
+				console.log('FETCH ERROR:', error);
+			})
+	 );			
 });
